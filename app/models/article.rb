@@ -2,6 +2,7 @@ class Article < ActiveRecord::Base
   has_many :comments
   has_many :taggings, :primary_key => :id, :foreign_key => :article_id, :class_name => 'Tagging'
   has_many :tags, through: :taggings
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
   
   def tag_list
     self.tags.collect do |tag|
